@@ -206,15 +206,6 @@ valid_hotp_return(LastInterval, true = _ReturnInterval) ->
 valid_hotp_return(_LastInterval, _ReturnInterval) ->
     true.
 
--ifdef(OTP_RELEASE).
--if(?OTP_RELEASE >= 23).
+
 hmac(DigestMethod, Key, Msg) ->
     crypto:mac(hmac, DigestMethod, Key, Msg).
--else.
-hmac(DigestMethod, K, S) ->
-    crypto:hmac(DigestMethod, K, S).
--endif.
--else.
-hmac(DigestMethod, K, S) ->
-    crypto:hmac(DigestMethod, K, S).
--endif.
